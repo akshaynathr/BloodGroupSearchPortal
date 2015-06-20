@@ -1,3 +1,4 @@
+<!DOCTYPE >
 <html>
 
 	<head>
@@ -8,76 +9,93 @@
  </head>
  
  
-	<body>
-
-
-<form class="form-horizontal" method='post'>
+	<body style="text-align:center">
+	 
+ <form class="form-horizontal" method="POST">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Blood Group Details Entry</legend>
+<legend>Blood Group Data Entry</legend>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="dept">Department</label>
-  <div class="controls">
-    <input id="dept" name="dept" type="text" placeholder="" class="input-medium" required="">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="name" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="textinput">Name</label>
-  <div class="controls">
-    <input id="textinput" name="textinput" type="text" placeholder="" class="input-medium" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="group">Blood Group</label>
-  <div class="controls">
-    <input id="group" name="group" type="text" placeholder="" class="input-small" required="">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="group">Blood Group</label>  
+  <div class="col-md-4">
+  <input id="group" name="group" type="text" placeholder="eg: B+ve" class="form-control input-md" required="">
     
   </div>
 </div>
 
 <!-- Multiple Radios -->
-<div class="control-group">
-  <label class="control-label" for="gender">Gender</label>
-  <div class="controls">
-    <label class="radio" for="gender-0">
-      <input type="radio" name="gender" id="gender-0" value="Male" checked="checked">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="gender">Gender</label>
+  <div class="col-md-4">
+  <div class="radio">
+    <label for="gender-0">
+      <input type="radio" name="gender" id="gender-0" value="1" checked="checked">
       Male
     </label>
-    <label class="radio" for="gender-1">
-      <input type="radio" name="gender" id="gender-1" value="Female">
+	</div>
+  <div class="radio">
+    <label for="gender-1">
+      <input type="radio" name="gender" id="gender-1" value="2">
       Female
     </label>
+	</div>
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="phone">Phone no</label>
-  <div class="controls">
-    <input id="phone" name="phone" type="text" placeholder="" class="input-medium" required="">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="dept">Department</label>  
+  <div class="col-md-4">
+  <input id="dept" name="dept" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
 
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="phone">Phone no</label>  
+  <div class="col-md-4">
+	  <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="">
+	  </div>
+
 <!-- Button -->
-<div class="control-group">
-  <label class="control-label" for="submit"></label>
-  <div class="controls">
-	<input type="submit" />   
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
   </div>
 </div>
 
 </fieldset>
 </form>
+  <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
 
 	</body>
 
