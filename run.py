@@ -1,3 +1,4 @@
-from app import application
+from app.views import application
 
-application.run()
+if __name__=="__main__":
+	application.run(debug=True,host='0.0.0.0')
