@@ -68,38 +68,32 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center">
-               {{ title }} 
-            </h1>
-            <h3 class="text-center">
-            
-		</h3>
-        </div>
-        <div id="no-more-tables">
-            <table class="col-md-12 table-bordered table-striped table-condensed cf">
-        		<thead class="cf">
-        			<tr>
-        				<th>Name</th>
-        				<th>Blood Group</th>
-        				<th class="numeric">Department</th>
-        				<th class="numeric">Phone no</th>
-        			</tr>
-        		</thead>
-        		<tbody>
-				{% for user in details %}
-				
-        			<tr>
-        				<td data-title="Code">{{ user.name }}</td>
-        				<td data-title="Company">{{ user.group }}</td>
-        				<td data-title="Price" class="numeric">{{ user.dept }}</td>
-        				<td data-title="Change" class="numeric">{{ user.phoneno }}</td>
-        			</tr>
-        		{% endfor %}	
-        		</tbody>
-        	</table>
-        </div>
-    </div>
+   
+   <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Group</th>
+        <th>Department</th>
+        <th> Phone no</th>
+      </tr>
+    </thead>
+    <tbody>
+		{% for detail in details %}
+      <tr>
+        <td>{{ detail.name }}</td>
+        <td>{{ detail.group }}</td>
+        <td>{{ detail.dept }}</td>
+        <td>{{ detail.phoneno }}</td>
+      </tr>
+      {% endfor %}
+       
+    </tbody>
+  </table>
+  </div>
+       
+   </div>
 </div>
 
 
