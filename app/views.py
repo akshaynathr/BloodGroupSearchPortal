@@ -34,13 +34,22 @@ def Search():
 
 
 def _save_Details(name,group,dept,gender,phone):
-	Detail=Details()
-	Detail.name=name
-	Detail.group=group
-	Detail.dept=dept
-	Detail.phoneno=phone	
-	Detail.gender=gender
-	Detail.save()
+	
+	if Details.objects(phoneno=phone).first() is  None:
+		Detail=Details()
+		Detail.name=name
+		Detail.group=group
+		Detail.dept=dept
+		Detail.phoneno=phone
+		if int(gender) is 1:	
+			Detail.gender="Male"
+		elif int(gender) is 2:
+			Detail.gender="Female"
+		else:
+			print ("Error. Wrong Gender specified")
+		Detail.save()
+		return "<h2 style='color:green'> Data Registered. </h2>"
+	return "<h2 style='color:red'>Error</h2><h2>Possibly a duplicate. </h2>"
 
 
 @application.route('/EnterDetails')
@@ -54,10 +63,12 @@ def submit():
 	Group=request.form['group']
 	Dept=request.form['dept']
 	Gender=request.form['gender']
+	print (Gender)
+	
 	Phone=request.form['phone']	
 	if Name and Group and Dept and Gender and Phone:
-		_save_Details(Name,Group,Dept,Gender,Phone)
-		return "Done"
+		message=_save_Details(Name,Group,Dept,Gender,Phone)
+		return message 
 	return "Error!Please Fill correctly"
 
 @application.route('/all')
