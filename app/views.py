@@ -79,5 +79,14 @@ def display_all():
 	return render_template("List.html",details=AllList,title=title)
 
 @application.route('/delete')
+def delete():
+	return render_template("del.html")
+
+@application.route('/delete',methods=["POST"])
 def delete_user():
-	return ''
+	phoneno=request.form['phoneno']
+	User=Details.objects(phoneno=phoneno).first()
+	if User is None:
+		return "<h2 style='color:red'>No user match</h2>"
+	User.delete()
+	return "<h2 style='color:red'>Deleted User</h2>"
