@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Full List </title>
+</head>
+
+<body>
+	{% for user in details %}
+
+<h3> {{ user.name }} &nbsp;  &nbsp; &nbsp; {{ user.group }} &nbsp; &nbsp;  &nbsp; {{ user.dept }} &nbsp; &nbsp; &nbsp;{{ user.phoneno }}</h3>   
+<br/>
+	{% endfor %}
+
+</body>
+
+</html>
