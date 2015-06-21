@@ -7,10 +7,12 @@ class Details(db.Document):
 	    bloodgroup
 	    dept
 	    gender
-	    phoneno"""
+	    phoneno
+	    year"""
 	name=db.StringField(max_length=50,required=True)
 
 	group=db.StringField(max_length=50,required=True)
 	dept=db.StringField(max_length=50,required=True)
 	gender=db.StringField(max_length=50,required=True)
 	phoneno=db.StringField(max_length=50,required=True)
+	year=db.StringField(max_length=50,required=True)
