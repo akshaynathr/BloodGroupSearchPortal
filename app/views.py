@@ -2,6 +2,7 @@ from flask import Flask
 
 from flask.ext.mongoengine import MongoEngine
 
+from mongoengine import *
 from flask import render_template,request
 
 from models import Details,db
@@ -14,6 +15,9 @@ application.config["MONGODB_SETTINGS"]={'db':'projectB'}
 application.secret_key="akshaynathrprojectB"
 
 db.init_app(application)
+def _sort(Data):
+	words=Data.split()
+	return words
 
 
 @application.route('/home')
@@ -26,14 +30,13 @@ def home():
 @application.route('/',methods=["POST"])
 def Search():
 	term=request.form['search']
-	List=Details.objects(group=term).all()
-	print("")
-	print(List)
+	words=_sort(term)	
+	List=Details.objects.filter(Q(group=words[0]) & Q(year=words[2]) & Q(dept=words[1]) )
 	title="Students with Blood Group " + term
 	return render_template('List.html',details=List,title=title)
 
 
-def _save_Details(name,group,dept,gender,phone):
+def _save_Details(name,group,dept,gender,phone,year):
 	
 	if Details.objects(phoneno=phone).first() is  None:
 		Detail=Details()
@@ -47,10 +50,10 @@ def _save_Details(name,group,dept,gender,phone):
 			Detail.gender="Female"
 		else:
 			print ("Error. Wrong Gender specified")
+		Detail.year=year
 		Detail.save()
 		return "<h2 style='color:green'> Data Registered. </h2>"
 	return "<h2 style='color:red'>Error</h2><h2>Possibly a duplicate. </h2>"
-
 
 @application.route('/EnterDetails')
 def details():
@@ -63,11 +66,10 @@ def submit():
 	Group=request.form['group']
 	Dept=request.form['dept']
 	Gender=request.form['gender']
-	print (Gender)
-	
+	Year=request.form['year']	
 	Phone=request.form['phone']	
 	if Name and Group and Dept and Gender and Phone:
-		message=_save_Details(Name,Group,Dept,Gender,Phone)
+		message=_save_Details(Name,Group,Dept,Gender,Phone,Year)
 		return message 
 	return "Error!Please Fill correctly"
 
