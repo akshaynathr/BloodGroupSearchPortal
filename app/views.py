@@ -31,7 +31,7 @@ def home():
 def Search():
 	term=request.form['search']
 	words=_sort(term)	
-	List=Details.objects.filter(Q(group=words[0]) & Q(year=words[2]) & Q(dept=words[1]) )
+	List=Details.objects.filter(Q(group=words[0]) & Q(year=words[1]))
 	title="Students with Blood Group " + term
 	return render_template('List.html',details=List,title=title)
 
