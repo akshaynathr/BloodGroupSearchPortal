@@ -52,8 +52,8 @@ def _save_Details(name,group,dept,gender,phone,year):
 			print ("Error. Wrong Gender specified")
 		Detail.year=year
 		Detail.save()
-		return "<h2 style='color:green'> Data Registered. </h2>"
-	return "<h2 style='color:red'>Error</h2><h2>Possibly a duplicate. </h2>"
+		return "<h2 style='color:green'> Data Registered. </h2><h5><a href='EnterDetails'>Go back</a></h5>"
+	return "<h2 style='color:red'>Error</h2><h2>Possibly a duplicate... </h2><h5><a href='EnterDetails'>Go back</a></h5>"
 
 @application.route('/EnterDetails')
 def details():
@@ -71,7 +71,7 @@ def submit():
 	if Name and Group and Dept and Gender and Phone:
 		message=_save_Details(Name,Group,Dept,Gender,Phone,Year)
 		return message 
-	return "Error!Please Fill correctly"
+	return "Error!Please Fill correctly.<h5><a href='EnterDetails'>Go back</a>"
 
 @application.route('/all')
 def display_all():
@@ -89,6 +89,6 @@ def delete_user():
 	phoneno=request.form['phoneno']
 	User=Details.objects(phoneno=phoneno).first()
 	if User is None:
-		return "<h2 style='color:red'>No user match</h2>"
+		return "<h2 style='color:red'>No user match</h2><h5><a href='/delete'>Go back</a></h5>"
 	User.delete()
 	return "<h2 style='color:red'>Deleted User</h2>"
